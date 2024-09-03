@@ -1,0 +1,123 @@
+@use '../source/config/reset';
+@use '../source/config/variaveis';
+
+@mixin display {
+    display: flex;
+    align-items: center;
+}
+@mixin lista {
+    list-style: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+body {
+    background-color: lighten(variaveis.$corPrincipal, 65%);
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: variaveis.$corPrincipal;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    & .container {
+        @include display();
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
+}
+    
+.menu {
+    @include display();
+
+    li {
+        @include lista();
+        margin-left: 30px;
+    }
+
+    a {
+        color: variaveis.$corFonte;
+        text-decoration: none;
+    }
+}
+
+section {
+    padding: 56px 0;
+
+    h2 {
+        color: variaveis.$corPrincipal;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .products {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, 32.66%);
+        column-gap: 1%;
+        row-gap: 4%;
+        width: 100%;
+
+        li {
+            @include lista;
+        }
+
+        p {
+            font-weight: normal;
+            padding: 10px 0;
+        }
+    }
+
+    img {
+        width: 100%;
+        border-radius: 16px;
+    }
+}
+
+.product-button {
+    display: block;
+    background-color: variaveis.$corBotao;
+    color: variaveis.$corFonte;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 8px;
+    margin-top: 8px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: darken(variaveis.$corBotao, 40%);
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        max-width: 80%;
+    }
+
+    section .products {
+        grid-template-columns: repeat(2, 48.5%);
+        column-gap: 3%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    section .products {
+        display: block;
+    }
+
+    .product-item  {
+        margin-bottom: 32px;
+    }
+}
+
+
+
+
+
